@@ -1,0 +1,148 @@
+﻿@model IEnumerable<houseNotificationsProject.Models.SubRegion>
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Residents table</title>
+    <style type="text/css">
+        td {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        th {
+            border: 1px solid black;
+            text-align: left;
+        }
+
+        .TreeTable {
+            border: 3px solid double;
+            text-align: left;
+        }
+
+        .RegionTh {
+            cursor: pointer;
+        }
+
+            .RegionTh:hover {
+                cursor: pointer;
+                background-color: darkgray;
+                color: white;
+            }
+
+        .StreetTh {
+            cursor: pointer;
+        }
+
+            .StreetTh:hover {
+                cursor: pointer;
+                background-color: darkgray;
+                color: white;
+            }
+
+        .HouseTh {
+            cursor: pointer;
+        }
+
+            .HouseTh:hover {
+                cursor: pointer;
+                background-color: darkgray;
+                color: white;
+            }
+
+        .PorchTh {
+            cursor: pointer;
+        }
+
+            .PorchTh:hover {
+                cursor: pointer;
+                background-color: darkgray;
+                color: white;
+            }
+
+        .ApartmentTh {
+            text-align: center;
+        }
+
+        .TopMenuTable {
+            background-color: darkgrey;
+            color: White;
+        }
+
+
+        .DeleteRegionButton, .DeleteRegionButton, .RegionMessageButton, .RegionAddButton {
+            cursor: pointer;
+        }
+
+        .DeleteStreetButton {
+            cursor: pointer;
+        }
+
+        #entities {
+            padding-right: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Residents table</h1>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"> Here You could choose Residents </div>
+                            <hr />
+                            <div id="entities">
+                                <div class="AddRegionForm" style="margin-left:10%">
+                                    <label>Add Region</label>
+                                    <input type="text" class="RegionTextBox" />
+                                    <button type="button" class="btn btn-danger" id="AddRegionButton">Add</button>
+                                </div>
+                                <h6></h6>
+                                <div class="panel-body">
+                                    <div class="table-responsive" style="width:110%">
+                                        <table class="TreeTable table-striped table-hover dataTable no-footer" cellpadding="7" cellspacing="0" width="100%">
+                                            <tr class="Names">
+                                                <th class="TopMenuTable" width="20%" style="text-align: center">Regions</th>
+                                                <th class="TopMenuTable" width="20%" style="text-align: center">Streets</th>
+                                                <th class="TopMenuTable" width="13%" style="text-align: center">Houses</th>
+                                                <th class="TopMenuTable" width="10%" style="text-align: center">Porches</th>
+                                                <th class="TopMenuTable" width="10%" style="text-align: center">Apartments</th>
+                                                <th class="TopMenuTable" width="40%" style="text-align: center">Actions</th>
+                                            </tr>
+
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr class="RowRegion" data-RegionId="@item.SubRegionId">
+                                                    <th id="@item.SubRegionId" data-isOpen="false" class="RegionTh" style="font-weight:normal"><img src="~/Images/ArrowRight.png" class="RegionImage" />@item.Name</th>
+                                                    <td colspan="4">Region Description</td>
+                                                    <td>
+                                                        <img src="~/Images/mail.png" class="RegionMessageButton" alt="Отправить уведомлению этому району" title="Отправить уведомлению этому району" id="@item.SubRegionId" data-isOpen="false" />
+                                                        <img src="~/Images/add.png" class="StreetAddButton" alt="Add street" title="Add street" id="@item.SubRegionId" data-isOpen="false" />
+                                                        <img src="~/Images/delete.png" class="DeleteRegionButton" alt="DeleteRegion" title="Delete region" id="@item.SubRegionId">
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/MyScripts/GetEntities.js"></script>
+        <script src="~/Scripts/MyScripts/jquery.transform2d.js"></script>
+
+    </div>
+</body>
+
+</html>

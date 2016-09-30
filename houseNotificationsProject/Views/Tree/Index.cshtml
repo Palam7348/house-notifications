@@ -1,0 +1,39 @@
+﻿@model IEnumerable<houseNotificationsProject.Models.SubRegion>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style type="text/css">
+        
+        
+
+       
+        
+       
+    </style>
+</head>
+<body>
+    <hr />
+    
+    <div class="tree" id="entities">
+        <ul class="List">
+            @foreach(var item in Model)
+            {
+                <li><span class="Region-title">@item.Name</span> <button id="@item.SubRegionId" class="StreetButton" data-isOpen="false">=></button> <ul class="sub-category"></ul></li>
+            }
+        </ul>
+    </div>
+        
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/MyScripts/GetAllRegions.js"></script>
+
+</body>
+</html>
